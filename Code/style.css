@@ -1,0 +1,43 @@
+/* colors
+    FDFFFC -- white
+    AD343E -- Luffy's Red
+    FF8C42 -- Nami's Orange
+    33673B -- Zoro's Green
+    E3B505 -- Usopp's Yellow
+    4357AD -- Sanji's Blue
+    F0A6CA -- Chopper's Pink
+    A997DF -- Robin's Purple
+    86BBD8 -- Franky's Light Blue
+
+*/
+
+body{
+    text-align: center;
+    background-color: white;
+}
+
+.hero-image{
+    margin: auto;
+    padding: 0 2px 0 2px;
+}
+h1{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#game-board {
+    width: 98%;
+    height: 85vh;
+    margin:auto;
+    background-color: #E3B23C;
+
+}
+
+canvas {
+    background-color:#d9bc77;
+    width: 96%;
+    height: 80vh;
+    margin: auto;
+    margin-top: 3px;
+
+}
