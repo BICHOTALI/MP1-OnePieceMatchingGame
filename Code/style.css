@@ -1,5 +1,5 @@
 /* colors
-    FDFFFC -- white
+    FDFFFC -- Jinbe's white
     AD343E -- Luffy's Red
     FF8C42 -- Nami's Orange
     33673B -- Zoro's Green
@@ -29,12 +29,18 @@ h1{
     width: 98%;
     height: 85vh;
     margin:auto;
-    background-color: #E3B23C;
+    border: 2px solid #AD343E;
 
 }
 
+#game-board img{
+    width: 100%;
+    max-height: 100%;
+    
+}
+
 canvas {
-    background-color:#d9bc77;
+    background-color: #FDFFFC;
     width: 96%;
     height: 80vh;
     margin: auto;
