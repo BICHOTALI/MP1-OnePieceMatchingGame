@@ -1,8 +1,3 @@
-// Get the canvas element from the HTML document that will host my game
-const canvas = document.getElementById('game-canvas');
-//Gets the 2D rendering context for the canvas that will allow us to draw on it
-const ctx = canvas.getContext('2d');
-
 // Card properties
 const cardWidth = 25;
 const cardHeight = 25;
