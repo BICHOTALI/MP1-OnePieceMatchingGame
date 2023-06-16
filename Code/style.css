@@ -34,5 +34,11 @@ h1{
     height: 85vh;
     margin:auto;
     border: 2px solid #AD343E;
+}
+.memory-card{
+    border: 2px solid yellow;
+}
 
+img{
+    width: 20px;
 }
