@@ -19,26 +19,28 @@
 
 body{
     height: 100vh;
-    text-align: center;
-    background-color: white;
-}
-
-h1{
-    margin-top: 0;
-    padding-top: 0;
-    margin-bottom: 0;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 23%, rgba(244,174,154,0.9668461134453782) 40%, rgba(230,78,36,0.9416360294117647) 58%, rgba(202,52,10,0.894016981792717) 76%);
 }
 
 #game-board {
-    width: 98%;
-    height: 85vh;
-    margin:auto;
+    width: 1000px;
+    height: 1000px;
+    display: flex;
+    flex-wrap: wrap;
     border: 2px solid #AD343E;
 }
 .memory-card{
+    width: 20%;
+    height: 25%;
+    position: relative;
     border: 2px solid yellow;
 }
 
-img{
-    width: 20px;
+.front-face,
+.back-face {
+    position:absolute;
+    border: 2px solid black;
+    width: 100%;
+    height: 100%;
 }
