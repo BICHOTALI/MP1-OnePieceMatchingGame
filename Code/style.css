@@ -11,18 +11,21 @@
 
 */
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
+    height: 100vh;
     text-align: center;
     background-color: white;
 }
 
-.hero{
-    margin: auto;
-    padding: 0 2px 0 2px;
-}
-
 h1{
     margin-top: 0;
+    padding-top: 0;
     margin-bottom: 0;
 }
 
@@ -31,20 +34,5 @@ h1{
     height: 85vh;
     margin:auto;
     border: 2px solid #AD343E;
-
-}
-
-#game-board img{
-    width: 100%;
-    max-height: 100%;
-    
-}
-
-canvas {
-    background-color: #FDFFFC;
-    width: 96%;
-    height: 80vh;
-    margin: auto;
-    margin-top: 3px;
 
 }
