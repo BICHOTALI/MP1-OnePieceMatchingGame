@@ -1,9 +1,5 @@
-// Card properties
-const cardWidth = 25;
-const cardHeight = 25;
-
 //This class helps me create cards and common behaviors/properites without having to repeat code
-class Card {
+/*class Card {
     constructor(name){
         this.name = name;
         this.width = cardWidth;
@@ -60,3 +56,5 @@ const cards = [
   }
   
   shuffleArray(cards);
+*/
+const cards = document.querySelectorAll("memory-card")
