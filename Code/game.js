@@ -7,10 +7,10 @@ let lockBoard = false;
 let firstCard, secondCard;
 
 
-
 //function that adds CSS class 'flip' to the memory-card elements.
 function flipCard() {
   if (lockBoard) return;
+  if (this === firstCard) return;
 
   this.classList.add('flip');
 
@@ -23,7 +23,6 @@ function flipCard() {
     return;
   } 
     // second click
-    hasFlippedCard = false;
     secondCard = this;
     
     checkForMatch()
@@ -42,6 +41,8 @@ function checkForMatch() {
 function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
+
+  resetBoard();
 }
 
 
@@ -53,10 +54,14 @@ function unflipCards() {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
 
-    lockBoard = false;
+    resetBoard();
   }, 1000)
 }
 
+function resetBoard() {
+  [hasFlippedCard, lockBoard] = [false, false]
+  [firstCard, secondCard] = [null, null]
+}
 
 //LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
 cards.forEach(card => card.addEventListener('click', flipCard))
