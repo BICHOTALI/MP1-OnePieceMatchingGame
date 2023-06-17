@@ -3,13 +3,15 @@ const cards = document.querySelectorAll(".memory-card")
 
 
 let hasFlippedCard = false;
-let lockBoard
+let lockBoard = false;
 let firstCard, secondCard;
 
 
 
 //function that adds CSS class 'flip' to the memory-card elements.
 function flipCard() {
+  if (lockBoard) return;
+
   this.classList.add('flip');
 
   //checks the value of hasFlippedCard variable
@@ -45,9 +47,13 @@ function disableCards() {
 
 // not a match
 function unflipCards() {
+  lockBoard = true;
+
   setTimeout(() => {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
+
+    lockBoard = false;
   }, 1000)
 }
 
