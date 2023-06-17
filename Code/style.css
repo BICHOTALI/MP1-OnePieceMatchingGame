@@ -32,6 +32,7 @@ body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+    perspective: 1000px;
 }
 /* Card Styles */
 .memory-card {
@@ -40,6 +41,8 @@ body {
     margin: 5px;
     position: relative;
     transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
 }
 .front-face,
 .back-face {
