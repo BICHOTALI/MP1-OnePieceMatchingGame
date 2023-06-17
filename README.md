@@ -10,6 +10,5 @@ HOW TO PLAY (Instructions):
 
 CITATIONS:
 
-
-
-
+Code Sketch / Marina Ferreira
+https://marina-ferreira.github.io/projects/js/memory-game/
