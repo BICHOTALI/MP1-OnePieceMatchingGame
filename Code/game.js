@@ -1,11 +1,30 @@
 //Selects all elements that represent the memory cards in the game and stores them in the cards variable.
 const cards = document.querySelectorAll(".memory-card")
 
-//function that adds flip to the class of the memory card div
-function flipCard(){
-  this.classList.toggle('flip')
+let hasFlippedCard = false;
+let firstCard, secondCard;
+
+
+
+//function that adds CSS class flip to the memory-card element.
+function flipCard() {
+  this.classList.add('flip');
+  //checks the value of hasFlippedCard variable
+  if (!hasFlippedCard) {
+    // first click
+    hasFlippedCard = true;
+    firstCard = this;
+  } else {
+    //second click
+    hasFlippedCard = false;
+    secondCard = this;
+
+
+  }
+
+
 }
 
-//LOOP THAT ADDS EVENT.LISTENER TO EACH CARD
+//LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
 cards.forEach(card => card.addEventListener('click', flipCard))
 

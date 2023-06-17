@@ -17,11 +17,12 @@
     box-sizing: border-box;
 }
 body {
-    height: 100vh;
+    height: 100vh; 
     display: flex;
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 23%, rgba(244,174,154,0.9668461134453782) 40%, rgba(230,78,36,0.9416360294117647) 58%, rgba(202,52,10,0.894016981792717) 76%);
 }
+
 
 /* This is the styles for the Game Board and Elements within*/
 
@@ -32,39 +33,50 @@ body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    perspective: 1000px;
+    perspective: 1000px; /* used for 3D transforms */
 }
+
+
 /* Card Styles */
 .memory-card {
+    /* sets the width and height of the cards using the calc() function to subtract margins */
     width: calc(20% - 15px);
     height: calc(25% - 10px);
     margin: 5px;
     position: relative;
+    /* transform sets intitial scale to 1, transform-style: preserve-3d allows for 3D transformations, transition to animate transform property */
     transform: scale(1);
-    transform-style: preserve-3d;
+    transform-style: preserve-3d; 
     transition: transform .5s;
 }
+
 .front-face,
 .back-face {
+    /* width & height of img takes up 100% of the memory-card div */
     width: 100%;
     height: 100%;
-    padding: 10px;
+    padding: 5px;
     position: absolute;
     border-radius: 8px;
     background-color: black;
-    backface-visibility: hidden;
+    backface-visibility: hidden; /* ensures that the back face is not visible when the card is flipped */
 }
 
 .front-face{
+    /* rotates so it becomes back-face of card */
     transform: rotateY(180deg);
 }
 
+
 /* Click animation */
 .memory-card:active {
+    /* scales down the card slightly */
     transform: scale(.97);
+    /* creates visual feedback for click action */
     transition: transform .2s;
 }
 
 .memory-card.flip {
+    /* reveals back-face */
     transform: rotateY(180deg)
 }
