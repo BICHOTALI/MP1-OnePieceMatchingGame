@@ -57,3 +57,6 @@ body {
     transition: transform .2s;
 }
 
+.memory-card.flip {
+    transform: rotateY(180deg)
+}
