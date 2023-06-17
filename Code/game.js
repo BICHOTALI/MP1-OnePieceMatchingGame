@@ -20,9 +20,21 @@ function flipCard() {
     secondCard = this;
     
     // do cards match?
+    if (firstCard.dataset.name === secondCard.dataset.name) {
+      // its a match!
+      firstCard.removeEventListener('click', flipCard);
+      secondCard.removeEventListener('click', flipCard);
+      }
+      // not a match
+      else {
+        setTimeout(() => {
+          firstCard.classList.remove('flip');
+          secondCard.classList.remove('flip');
+        }, 1000)
+        
+      }
+
   }
-
-
 }
 
 //LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
