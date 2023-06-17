@@ -15,11 +15,11 @@ function flipCard() {
     hasFlippedCard = true;
     firstCard = this;
   } else {
-    //second click
+    // second click
     hasFlippedCard = false;
     secondCard = this;
-
-
+    
+    // do cards match?
   }
 
 
