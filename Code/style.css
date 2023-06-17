@@ -52,6 +52,11 @@ body {
     position: absolute;
     border-radius: 8px;
     background-color: black;
+    backface-visibility: hidden;
+}
+
+.front-face{
+    transform: rotateY(180deg);
 }
 
 /* Click animation */
