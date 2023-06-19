@@ -1,10 +1,11 @@
 //Selects all elements that represent the memory cards in the game and stores them in the cards variable.
 const cards = document.querySelectorAll(".memory-card")
 
-
+let currentPlayer = 'player1'
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+
 
 
 //function that adds CSS class 'flip' to the memory-card elements.
