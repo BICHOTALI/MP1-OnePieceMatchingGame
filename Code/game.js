@@ -60,8 +60,17 @@ function unflipCards() {
 
 function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false]
-  [firstCard, secondCard] = [null, null]
+  [firstCard, secondCard] = [null, null];
 }
+
+//shuffles cards into a random position.. parentheses mean it will be called immediatly at the start of the game
+(function shuffle() {
+  cards.forEach(card => {
+    let randomPos = Math.floor(Math.random() * 12);
+    card.style.order = randomPos;
+  });
+})();
+
 
 //LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
 cards.forEach(card => card.addEventListener('click', flipCard))
