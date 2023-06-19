@@ -58,6 +58,7 @@ function unflipCards() {
   }, 1000)
 }
 
+//returns game variables to initial values
 function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false]
   [firstCard, secondCard] = [null, null];

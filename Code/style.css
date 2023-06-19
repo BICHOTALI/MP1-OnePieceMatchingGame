@@ -17,11 +17,30 @@
     box-sizing: border-box;
 }
 body {
-    height: 100vh; 
+    height: 100vh;
     display: flex;
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 23%, rgba(244,174,154,0.9668461134453782) 40%, rgba(230,78,36,0.9416360294117647) 58%, rgba(202,52,10,0.894016981792717) 76%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url('https://w0.peakpx.com/wallpaper/121/94/HD-wallpaper-one-piece-one-piece-anime.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.logo-image {
+    margin-top: 20px;
+    text-align: center;
+}
+.logo-image img{
+    width: 350px;
+}
+
+h1{
+    color: #E3B505;
+    margin-top: 10px;
+}
+
 
 
 /* This is the styles for the Game Board and Elements within*/
@@ -31,6 +50,7 @@ body {
     width: 800px;
     height: 800px;
     margin: auto;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px; /* used for 3D transforms */
