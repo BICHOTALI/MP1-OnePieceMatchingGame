@@ -7,6 +7,9 @@ let lockBoard = false;
 let firstCard, secondCard;
 
 
+//LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
+cards.forEach(card => card.addEventListener('click', flipCard))
+
 
 //function that adds CSS class 'flip' to the memory-card elements.
 function flipCard() {
@@ -67,11 +70,35 @@ function unflipCards() {
   }, 1000)
 }
 
+
 //returns game variables to initial values
 function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false]
   [firstCard, secondCard] = [null, null];
 }
+
+
+// logic that handles the next players move (called when its CPU's turn)
+function nextPlayersTurn() {
+  if (currentPlayer === 'CPU') {
+    lockBoard = true; // Prevents player from interacting with gameboard while CPU is playing
+    setTimeout(() => {
+      // Simulate CPU's moves
+      const unFlippedCards = Array.from(cards).filter(card => !card.classList.contains('flip')); // Creates an array from the cards array
+      const randomIndex = Math.floor(Math.random() * unFlippedCards.length); // Generates a random index for selection within array
+      const randomCard = unFlippedCards[randomIndex]; // Accesses card from array using random index
+
+      randomCard.classList.add('flip');
+      secondCard = randomCard;
+      checkForMatch();
+
+      // Switch turns back to player1
+      currentPlayer = 'player1';
+      lockBoard = false;
+    }, 3000)
+  }
+}
+
 
 //shuffles cards into a random position.. parentheses mean it will be called immediatly at the start of the game
 (function shuffle() {
@@ -80,8 +107,3 @@ function resetBoard() {
     card.style.order = randomPos;
   });
 })();
-
-
-//LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
-cards.forEach(card => card.addEventListener('click', flipCard))
-
