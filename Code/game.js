@@ -27,6 +27,14 @@ function flipCard() {
     secondCard = this;
     
     checkForMatch()
+
+    // switch of current players turn
+    if (currentPlayer === 'player1') {
+      currentPlayer = 'CPU';
+      nextPlayersTurn();
+    } else {
+      currentPlayer = 'player1';
+    }
 }
 
 
