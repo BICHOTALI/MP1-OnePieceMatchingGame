@@ -1,10 +1,12 @@
 //Selects all elements that represent the memory cards in the game and stores them in the cards variable.
 const cards = document.querySelectorAll(".memory-card")
 
+// VARIABLES
 let currentPlayer = 'player1'
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+let matchedpPairsPoint = 0;
 
 
 //LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
@@ -51,8 +53,10 @@ function checkForMatch() {
 
 // its a match!
 function disableCards() {
-  firstCard.removeEventListener('click', flipCard);
-  secondCard.removeEventListener('click', flipCard);
+  if (currentPlayer === 'player1') {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+  }
 
   resetBoard();
 }
@@ -60,14 +64,20 @@ function disableCards() {
 
 // not a match
 function unflipCards() {
-  lockBoard = true;
+  if (currentPlayer === 'player1') {
+    lockBoard = true;
 
-  setTimeout(() => {
-    firstCard.classList.remove('flip');
-    secondCard.classList.remove('flip');
+    setTimeout(() => {
+      firstCard.classList.remove('flip');
+      secondCard.classList.remove('flip');
 
-    resetBoard();
-  }, 1000)
+      resetBoard();
+
+      currentPlayer = 'CPU';
+      nextPlayersTurn();
+    }, 1000)
+  }
+  
 }
 
 
@@ -85,7 +95,7 @@ function nextPlayersTurn() {
     setTimeout(() => {
       // Simulate CPU's moves
       const unFlippedCards = Array.from(cards).filter(card => !card.classList.contains('flip')); // Creates an array from the cards array
-      const randomIndex = Math.floor(Math.random() * unFlippedCards.length); // Generates a random index for selection within array
+      const randomIndex = Math.floor(Math.random() * unFlippedCards.length); // Generates a random index for selection from array
       const randomCard = unFlippedCards[randomIndex]; // Accesses card from array using random index
 
       randomCard.classList.add('flip');
