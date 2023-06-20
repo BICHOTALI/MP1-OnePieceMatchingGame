@@ -7,6 +7,7 @@ let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let matchedpPairsPoint = 0;
+const totalPairs = cards.length / 2;
 
 
 //LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
@@ -56,9 +57,15 @@ function disableCards() {
   if (currentPlayer === 'player1') {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+    matchedpPairsPoint += 1;
   }
 
   resetBoard();
+
+  if (matchedpPairsPoint === totalPairs) {
+    declareWinner()
+  }
+
 }
 
 
@@ -107,6 +114,12 @@ function nextPlayersTurn() {
       lockBoard = false;
     }, 3000)
   }
+}
+
+
+// Ends game and determines winner
+function declareWinner() {
+
 }
 
 
