@@ -84,7 +84,6 @@ function unflipCards() {
       nextPlayersTurn();
     }, 1000)
   }
-  
 }
 
 
@@ -117,9 +116,9 @@ function nextPlayersTurn() {
 }
 
 
-// Ends game and determines winner
+// Determines WINNER and ends game
 function declareWinner() {
-
+  
 }
 
 
