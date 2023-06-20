@@ -118,7 +118,18 @@ function nextPlayersTurn() {
 
 // Determines WINNER and ends game
 function declareWinner() {
-  
+  // Compares player points
+  let winner;
+  if (player1Points > cpuPoints){
+    winner = 'player1';
+  } else if (cpuPoints > player1Points) {
+    winner = 'CPU';
+  } else {
+    winner = "It's a Tie!"
+  }
+
+  // Display winner
+
 }
 
 
