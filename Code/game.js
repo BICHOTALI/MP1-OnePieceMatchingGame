@@ -2,11 +2,14 @@
 const cards = document.querySelectorAll(".memory-card")
 
 // VARIABLES
-let currentPlayer = 'player1'
+let currentPlayer = 'player1';
+let player1Points = 0;
+let cpuPoints = 0;
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
-let matchedpPairsPoint = 0;
+
+//set total # of pairs (half the # of cards)
 const totalPairs = cards.length / 2;
 
 
@@ -14,14 +17,14 @@ const totalPairs = cards.length / 2;
 cards.forEach(card => card.addEventListener('click', flipCard))
 
 
-//function that adds CSS class 'flip' to the memory-card elements.
+// Function that adds CSS class 'flip' to the memory-card elements.
 function flipCard() {
   if (lockBoard) return;
-  if (this === firstCard) return;
+  if (this === firstCard) return; //removes double click bug
 
   this.classList.add('flip');
 
-  //checks the value of hasFlippedCard variable
+  // Checks the value of hasFlippedCard variable
   if (!hasFlippedCard) {
     // first click
     hasFlippedCard = true;
@@ -34,7 +37,7 @@ function flipCard() {
     
     checkForMatch()
 
-    // switch of current players turn
+    // Switch of current players turn
     if (currentPlayer === 'player1') {
       currentPlayer = 'CPU';
       nextPlayersTurn();
@@ -44,7 +47,7 @@ function flipCard() {
 }
 
 
-// do cards match?
+// Do cards match?
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
@@ -52,24 +55,21 @@ function checkForMatch() {
 }
 
 
-// its a match!
+// Its a match!
 function disableCards() {
   if (currentPlayer === 'player1') {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-    matchedpPairsPoint += 1;
+    player1Points++; // Increment of players points
+  } else {
+    cpuPoints++; // Increment of cpu points
   }
 
   resetBoard();
-
-  if (matchedpPairsPoint === totalPairs) {
-    declareWinner()
-  }
-
 }
 
 
-// not a match
+// Not a match
 function unflipCards() {
   if (currentPlayer === 'player1') {
     lockBoard = true;
@@ -88,7 +88,7 @@ function unflipCards() {
 }
 
 
-//returns game variables to initial values
+// Returns game variables to initial values
 function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false]
   [firstCard, secondCard] = [null, null];
