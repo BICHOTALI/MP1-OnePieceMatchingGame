@@ -7,10 +7,13 @@ let player1Points = 0;
 let cpuPoints = 0;
 let hasFlippedCard = false;
 let lockBoard = false;
-let firstCard, secondCard;
+let firstCard;
+let secondCard;
 
 //set total # of pairs (half the # of cards)
 const totalPairs = cards.length / 2;
+
+
 
 
 //LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
@@ -41,7 +44,7 @@ function flipCard() {
     if (currentPlayer === 'player1') {
       currentPlayer = 'CPU';
       nextPlayersTurn();
-    } else {
+    } else if (currentPlayer === 'CPU'){
       currentPlayer = 'player1';
     }
 }
@@ -53,6 +56,23 @@ function checkForMatch() {
 
   isMatch ? disableCards() : unflipCards();
 }
+/*function checkForMatch() {
+  let isMatch = firstCard.dataset.name === secondCard.dataset.name;
+
+  if (isMatch) {
+    disableCards();
+  } else {
+    if (currentPlayer === 'player1') {
+      unflipCards();
+    } else {
+      setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+      }, 1000);
+    }
+  }
+}*/
+
 
 
 // Its a match!
@@ -62,6 +82,8 @@ function disableCards() {
     secondCard.removeEventListener('click', flipCard);
     player1Points++; // Increment of players points
   } else {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
     cpuPoints++; // Increment of cpu points
   }
 
@@ -82,7 +104,16 @@ function unflipCards() {
 
       currentPlayer = 'CPU';
       nextPlayersTurn();
-    }, 1000)
+    }, 1000);
+  } else {
+    setTimeout(() => {
+      firstCard.classList.remove('flip');
+      secondCard.classList.remove('flip');
+
+      resetBoard();
+
+      currentPlayer = 'player1'
+    }, 1000);
   }
 }
 
@@ -98,20 +129,31 @@ function resetBoard() {
 function nextPlayersTurn() {
   if (currentPlayer === 'CPU') {
     lockBoard = true; // Prevents player from interacting with gameboard while CPU is playing
+
     setTimeout(() => {
       // Simulate CPU's moves
       const unFlippedCards = Array.from(cards).filter(card => !card.classList.contains('flip')); // Creates an array from the cards array
-      const randomIndex = Math.floor(Math.random() * unFlippedCards.length); // Generates a random index for selection from array
-      const randomCard = unFlippedCards[randomIndex]; // Accesses card from array using random index
+      
+      if (unFlippedCards.length > 1) {
+        const randomIndex1 = Math.floor(Math.random() * unFlippedCards.length); // Generates a random index for selection from array
+        firstCard = unFlippedCards[randomIndex1]; // Accesses card from array using random index
+        firstCard.classList.add('flip');
 
-      randomCard.classList.add('flip');
-      secondCard = randomCard;
-      checkForMatch();
+        setTimeout(() => {
+          const randomIndex2 = Math.floor(Math.random() * (unFlippedCards.length - 1)); // Choose a random index for the second card
+          secondCard = unFlippedCards.filter((_, index) => index !== randomIndex1)[randomIndex2]; // Filter out the first card and select the second card
+          secondCard.classList.add('flip');
+          
+          checkForMatch();
 
-      // Switch turns back to player1
-      currentPlayer = 'player1';
-      lockBoard = false;
-    }, 3000)
+           // Switch turns back to player1
+          resetBoard();
+          currentPlayer = 'player1';
+          lockBoard = false;
+
+        }, 1000);
+      }
+    }, 2000);
   }
 }
 
@@ -136,7 +178,10 @@ function declareWinner() {
 //shuffles cards into a random position.. parentheses mean it will be called immediatly at the start of the game
 (function shuffle() {
   cards.forEach(card => {
-    let randomPos = Math.floor(Math.random() * 12);
+    let randomPos = Math.floor(Math.random() * 25);
     card.style.order = randomPos;
   });
 })();
+
+
+//Running into a bug where the CPU wont stop chossing cards even after no atch has been made... doesnt flip cards back over
