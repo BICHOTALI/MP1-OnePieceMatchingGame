@@ -1,4 +1,4 @@
-//Selects all elements that represent the memory cards in the game and stores them in the cards variable.
+// Selects all elements that represent the memory cards in the game and stores them in the cards variable.
 const cards = document.querySelectorAll(".memory-card")
 
 // VARIABLES
@@ -10,15 +10,15 @@ let lockBoard = false;
 let firstCard;
 let secondCard;
 
-//set total # of pairs (half the # of cards)
+// Set total # of pairs (half the # of cards)
 const totalPairs = cards.length / 2;
 
 
-//LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
+// LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
 cards.forEach(card => card.addEventListener('click', flipCard))
 
 
-//function that adds CSS class 'flip' to the memory-card elements.
+// Function that adds CSS class 'flip' to the memory-card elements.
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
@@ -35,34 +35,68 @@ function flipCard() {
     
     checkForMatch();
 }
-// do cards match?
+
+// Do cards match?
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
   isMatch ? disableCards() : unflipCards();
+
+  if (currentPlayer === 'player1'){
+    currentPlayer = 'CPU';
+    nextPlayersTurn();
+  } else {
+    currentPlayer = 'player1';
+  }
+
 }
-// its a match!
+
+// Its a match!
 function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
   resetBoard();
 }
-// not a match
+
+// Not a match
 function unflipCards() {
   lockBoard = true;
   setTimeout(() => {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
     resetBoard();
-  }, 1000)
+  }, 1100)
 }
 
 
-//returns game variables to initial values
+// Returns game variables to initial values
 function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false]
   [firstCard, secondCard] = [null, null];
 }
 
+// Logic that will run CPU's turn
+function nextPlayersTurn() {
+  if (currentPlayer === 'CPU') {
+    lockBoard = true; // Prevents player1 from choosing cards while CPU is playing
+
+    setTimeout(() => {
+      // Simulate CPU's moves
+      let unflippedCards = Array.from(cards).filter(card => !card.classList.contains('flip'));
+      //first flip
+      const randomIndex1 = Math.floor(Math.random() * unflippedCards.length);
+      firstCard = unflippedCards[randomIndex1];
+      firstCard.classList.add('flip');
+      //second flip
+      unflippedCards = Array.from(cards).filter(card => !card.classList.contains('flip'));
+      const randomIndex2 = Math.floor(Math.random() * unflippedCards.length);
+      secondCard = unflippedCards[randomIndex2];
+      secondCard.classList.add('flip','flip-delay');
+
+
+      checkForMatch();
+    }, 2500);
+  }
+}
 
 /*
 // Determines WINNER and ends game
@@ -81,13 +115,10 @@ function declareWinner() {
 }
 */
 
-//shuffles cards into a random position.. parentheses mean it will be called immediatly at the start of the game
+// Shuffles cards into a random position.. parentheses mean it will be called immediatly at the start of the game
 (function shuffle() {
   cards.forEach(card => {
     let randomPos = Math.floor(Math.random() * 25);
     card.style.order = randomPos;
   });
 })();
-
-
-//Running into a bug where the CPU wont stop chossing cards even after no atch has been made... doesnt flip cards back over
