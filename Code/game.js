@@ -55,6 +55,11 @@ function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
   resetBoard();
+  if(currentPlayer = 'player1'){
+    player1Points++;
+  }else{
+    cpuPoints++;
+  }
 }
 
 // Not a match
