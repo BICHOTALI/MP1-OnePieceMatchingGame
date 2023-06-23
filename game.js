@@ -67,7 +67,7 @@ function unflipCards() {
   lockBoard = true;
   setTimeout(() => {
     firstCard.classList.remove('flip');
-    secondCard.classList.remove('flip');
+    secondCard.classList.remove('flip', 'flip-delay');
     resetBoard();
   }, 1100)
 }
