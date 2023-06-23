@@ -44,7 +44,7 @@ function checkForMatch() {
   if (currentPlayer === 'player1'){
     currentPlayer = 'CPU';
     nextPlayersTurn();
-  } else {
+  } else if (currentPlayer === 'CPU'){
     currentPlayer = 'player1';
   }
 
@@ -55,9 +55,9 @@ function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
   resetBoard();
-  if(currentPlayer = 'player1'){
+  if(currentPlayer === 'player1'){
     player1Points++;
-  }else{
+  }else if (currentPlayer === 'CPU'){
     cpuPoints++;
   }
 }
