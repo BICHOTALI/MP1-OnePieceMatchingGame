@@ -38,19 +38,27 @@ body {
 h1{
     color: #ffd00d;
     margin-top: 10px;
-    text-shadow: 2px 2px #ad343e
+    text-shadow: 2px 2px #ad343e;
 }
 
 aside {
-    margin-top: 20px;
-    
+    margin-top: 40px;
 }
 
 aside div{
-    color: white;
+    color: black;
+    text-shadow: 1px 1px #86BBD8;
     display: inline-block;
     padding: 10px;
     padding-bottom: 0;
+}
+
+#game-status {
+    color: aliceblue;
+    background-color: #ad343e;
+    text-shadow: 1px 1px black;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 

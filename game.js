@@ -13,6 +13,11 @@ let secondCard;
 // Set total # of pairs (half the # of cards)
 const totalPairs = cards.length / 2;
 
+// Gets the game status and scores elements
+const gameStatusElement = document.getElementById('game-status');
+const player1ScoreElement = document.getElementById('player1-score');
+const cpuScoreElement = document.getElementById('cpu-score');
+
 
 // LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
 cards.forEach(card => card.addEventListener('click', flipCard))
@@ -103,7 +108,7 @@ function nextPlayersTurn() {
   }
 }
 
-/*
+
 // Determines WINNER and ends game
 function declareWinner() {
   // Compares player points
@@ -118,7 +123,7 @@ function declareWinner() {
 
   // Display winner
 }
-*/
+
 
 // Shuffles cards into a random position.. parentheses mean it will be called immediatly at the start of the game
 (function shuffle() {
