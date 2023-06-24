@@ -11,8 +11,9 @@ let firstCard;
 let secondCard;
 
 // Start Game overlay
-const startGameOverlay = document.querySelector('.overlay visible');
-startGameOverlay.addEventListener('click', startGame);
+const startGameOverlay = document.getElementById('overlay-text') ;
+const startGameButton = document.getElementById('btn');
+startGameButton.addEventListener('click', startGame);
 
 // Set total # of pairs (half the # of cards)
 const totalPairs = cards.length / 2;
@@ -25,6 +26,12 @@ const cpuScoreElement = document.getElementById('cpu-score');
 
 // LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+//Start
+function startGame(){
+  startGameButton.style.visibility = 'hidden';
+  startGameOverlay.remove();
+}
 
 
 // Function that adds CSS class 'flip' to the memory-card elements.

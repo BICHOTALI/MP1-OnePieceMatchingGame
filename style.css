@@ -1,15 +1,3 @@
-/* colors
-    FDFFFC -- Jinbe's white
-    AD343E -- Luffy's Red
-    FF8C42 -- Nami's Orange
-    33673B -- Zoro's Green
-    E3B505 -- Usopp's Yellow
-    4357AD -- Sanji's Blue
-    F0A6CA -- Chopper's Pink
-    A997DF -- Robin's Purple
-    86BBD8 -- Franky's Light Blue
-*/
-
 * {
     margin: 0;
     padding: 0;
@@ -41,6 +29,8 @@ h1{
     text-shadow: 2px 2px #ad343e;
 }
 
+
+/* Styles for Overlay Start Game */
 .overlay-text{
     display: none;
     position: fixed;
@@ -79,6 +69,8 @@ button{
     }
 }
 
+
+/* Styles for Game Points and Status */
 aside {
     margin-top: 40px;
 }
@@ -114,7 +106,6 @@ aside div{
     perspective: 1000px; /* used for 3D transforms */
 }
 
-
 /* Card Styles */
 .memory-card {
     /* sets the width and height of the cards using the calc() function to subtract margins */
@@ -144,7 +135,6 @@ aside div{
     /* rotates so it becomes back-face of card */
     transform: rotateY(180deg);
 }
-
 
 /* Click animation */
 .memory-card:active {
