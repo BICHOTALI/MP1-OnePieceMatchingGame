@@ -135,15 +135,15 @@ function declareWinner() {
   let winner;
   if (player1Points > cpuPoints){
     winner = 'Player 1';
+    gameStatusElement.textContent = `Great Job! Winner: ${winner}`;
   } else if (cpuPoints > player1Points) {
     winner = 'CPU';
+    gameStatusElement.textContent = `Game Over! Winner: ${winner}`;
   } else {
     winner = "It's a Tie!"
+    gameStatusElement.textContent = `Game Over! ${winner}`;
   }
-
-  // Display winner
-  gameStatusElement.textContent = `Game Over! Winner: ${winner}`;
-
+  
   // Disable further card clicks
   cards.forEach(card => card.removeEventListener('click', flipCard));
 }
