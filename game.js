@@ -10,6 +10,10 @@ let lockBoard = false;
 let firstCard;
 let secondCard;
 
+// Start Game overlay
+const startGameOverlay = document.querySelector('.overlay visible');
+startGameOverlay.addEventListener('click', startGame);
+
 // Set total # of pairs (half the # of cards)
 const totalPairs = cards.length / 2;
 
@@ -143,7 +147,7 @@ function declareWinner() {
     winner = "It's a Tie!"
     gameStatusElement.textContent = `Game Over! ${winner}`;
   }
-  
+
   // Disable further card clicks
   cards.forEach(card => card.removeEventListener('click', flipCard));
 }

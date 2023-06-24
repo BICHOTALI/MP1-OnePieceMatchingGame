@@ -12,3 +12,10 @@ CITATIONS:
 
 Code Sketch / Marina Ferreira
 https://marina-ferreira.github.io/projects/js/memory-game/
+-- helped me create the basic structure of my game
+
+
+How to Code a Card Matching Game / Web Dev Simplified
+https://youtu.be/28VfzEiJgy4
+time: 31:55 - 36:01
+-- helped me ceate my start game overlay
