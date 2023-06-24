@@ -10,7 +10,7 @@ HOW TO PLAY (Instructions):
     Your playing against a CPU so try to get more matches than it before you run out of cards
     ... Thats it! Have fun!!!
 
-
+**NOT COMPATIBLE WITH MOBILE DEVICES RIGHT NOW**
 
 CITATIONS:
 
