@@ -53,18 +53,22 @@ function checkForMatch() {
     currentPlayer = 'player1';
   }
 
+  updateGameStatus();
 }
 
 // Its a match!
 function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
-  resetBoard();
+  
   if(currentPlayer === 'player1'){
     player1Points++;
   }else if (currentPlayer === 'CPU'){
     cpuPoints++;
   }
+
+  resetBoard();
+  updateGameStatus();
 }
 
 // Not a match
@@ -106,6 +110,18 @@ function nextPlayersTurn() {
       checkForMatch();
     }, 2500);
   }
+}
+
+function updateGameStatus() {
+  if (currentPlayer === 'player1'){
+    gameStatusElement.textContent = "Player 1's Turn";
+  } else if (currentPlayer === 'CPU'){
+    gameStatusElement.textContent = "CPUs Turn";
+  } else {
+    gameStatusElement.textContent = "Game In Progress";
+  }
+  player1ScoreElement.textContent = `Player 1: ${player1Points}`;
+  cpuScoreElement.textContent = `CPU: ${cpuPoints}`;
 }
 
 
