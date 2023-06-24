@@ -20,7 +20,7 @@ const cpuScoreElement = document.getElementById('cpu-score');
 
 
 // LOOP THAT ADDS EVENT.LISTENER TO EACH CARD, when clicked flipCard function is called
-cards.forEach(card => card.addEventListener('click', flipCard))
+cards.forEach(card => card.addEventListener('click', flipCard));
 
 
 // Function that adds CSS class 'flip' to the memory-card elements.
@@ -41,6 +41,7 @@ function flipCard() {
     checkForMatch();
 }
 
+
 // Do cards match?
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
@@ -53,7 +54,7 @@ function checkForMatch() {
     currentPlayer = 'player1';
   }
 
-  updateGameStatus();
+  updateGameStatus(); 
 }
 
 // Its a match!
@@ -66,6 +67,10 @@ function disableCards() {
   }else if (currentPlayer === 'CPU'){
     cpuPoints++;
   }
+
+  // if (player1Points + cpuPoints === totalPairs) {
+  //   setTimeout(declareWinner, 1200)
+  // }
 
   resetBoard();
 }
@@ -111,6 +116,7 @@ function nextPlayersTurn() {
   }
 }
 
+// Dynamically updates html content to display player turn and player points
 function updateGameStatus() {
   if (currentPlayer === 'player1'){
     gameStatusElement.textContent = "Player 1's Turn";
@@ -120,7 +126,16 @@ function updateGameStatus() {
     gameStatusElement.textContent = "Game In Progress";
   }
   player1ScoreElement.textContent = `Player 1: ${player1Points}`;
-  cpuScoreElement.textContent = `CPU: ${cpuPoints}`;
+  cpuScoreElement.textContent = `CPU: ${cpuPoints}`; 
+}
+
+// Are all the cards flipped?
+function allCardsFlipped() {
+  // Check if all cards have been matched
+  const matchedPairs = document.querySelectorAll('.flip');
+  if (matchedPairs.length === totalPairs) {
+    setTimeout(declareWinner, 1300);
+  }
 }
 
 
@@ -137,6 +152,10 @@ function declareWinner() {
   }
 
   // Display winner
+  gameStatusElement.textContent = `Game Over! Winner: ${winner}`;
+
+  // Disable further card clicks
+  cards.forEach(card => card.removeEventListener('click', flipCard));
 }
 
 
@@ -147,3 +166,5 @@ function declareWinner() {
     card.style.order = randomPos;
   });
 })();
+
+updateGameStatus();
