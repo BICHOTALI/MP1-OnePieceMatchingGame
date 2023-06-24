@@ -68,9 +68,9 @@ function disableCards() {
     cpuPoints++;
   }
 
-  // if (player1Points + cpuPoints === totalPairs) {
-  //   setTimeout(declareWinner, 1200)
-  // }
+  if (player1Points + cpuPoints === totalPairs) {
+    setTimeout(declareWinner, 1500)
+  }
 
   resetBoard();
 }
@@ -129,22 +129,12 @@ function updateGameStatus() {
   cpuScoreElement.textContent = `CPU: ${cpuPoints}`; 
 }
 
-// Are all the cards flipped?
-function allCardsFlipped() {
-  // Check if all cards have been matched
-  const matchedPairs = document.querySelectorAll('.flip');
-  if (matchedPairs.length === totalPairs) {
-    setTimeout(declareWinner, 1300);
-  }
-}
-
-
 // Determines WINNER and ends game
 function declareWinner() {
   // Compares player points
   let winner;
   if (player1Points > cpuPoints){
-    winner = 'player1';
+    winner = 'Player 1';
   } else if (cpuPoints > player1Points) {
     winner = 'CPU';
   } else {
