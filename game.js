@@ -68,7 +68,6 @@ function disableCards() {
   }
 
   resetBoard();
-  updateGameStatus();
 }
 
 // Not a match
