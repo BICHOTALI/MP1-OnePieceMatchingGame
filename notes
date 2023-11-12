@@ -1,3 +1,5 @@
+Original CSS before Conversion to SCSS Activity
+
 * {
     margin: 0;
     padding: 0;
