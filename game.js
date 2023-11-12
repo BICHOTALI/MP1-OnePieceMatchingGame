@@ -50,11 +50,13 @@ function flipCard() {
     secondCard = this;
     
     checkForMatch();
+    lockBoard = true
 }
 
 
 // Do cards match?
 function checkForMatch() {
+  lockBoard = true
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
   isMatch ? disableCards() : unflipCards();
 
@@ -62,14 +64,19 @@ function checkForMatch() {
     currentPlayer = 'CPU';
     nextPlayersTurn();
   } else if (currentPlayer === 'CPU'){
+    lockBoard = true
     currentPlayer = 'player1';
   }
 
-  updateGameStatus(); 
+  setTimeout(()=>{
+    updateGameStatus()
+    lockBoard = false
+  }, 1050)
 }
 
 // Its a match!
 function disableCards() {
+  lockBoard = true
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
   
