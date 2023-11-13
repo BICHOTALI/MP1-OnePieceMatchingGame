@@ -2,7 +2,6 @@
 @use 'variables' as var;
 
 
-
 * {
     margin: 0;
     padding: 0;
@@ -14,9 +13,149 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-image: url('https://w0.peakpx.com/wallpaper/121/94/HD-wallpaper-one-piece-one-piece-anime.jpg');
+    background-image: $logo-img;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+h1 {
+    color: $yellow-color;
+    margin-top: 10px;
+    text-shadow: 2px 2px $red-color; //possible funtion
+}
+
+.logo-image {
+    margin-top: 20px;
+    text-align: center;
+
+    img {
+        width: 350px;
+    }
+}
+
+
+
+/* Styles for Overlay Start Game */
+.overlay-text{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    &.visible {
+        display: flex;
+        animation: overlay-grow 500ms forwards;
+    }
+}
+
+button{
+    font-size: 80%;
+    font-family: $main-font;
+    color: $yellow-color;
+    text-shadow: 3px 3px $red-color; //possible function
+    background-color: $btnOverlay-BLK;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+@keyframes overlay-grow{
+    from{
+        background-color: $btnOverlay-WHT;
+        font-size: 0;
+    }
+    to{
+        background-color: $btnOverlay-BLK;
+        font-size: 10em;
+    }
+}
+
+
+
+/* Styles for Game Points and Status */
+aside {
+    margin-top: 40px;
+
+    div {
+        color: $black-color;
+        text-shadow: 1px 1px $div-text-shadow; //possible funtion
+        display: inline-block;
+        padding: 10px;
+        padding-bottom: 0;
+    }
+}
+
+#game-status {
+    color: $game-status;
+    background-color: $red-color;
+    text-shadow: 1px 1px $black-color;//possible function
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+/* This is the styles for the Game Board and Elements within*/
+
+/* Game Board */
+.game-board {
+    width: 800px;
+    height: 800px;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px; /* used for 3D transforms */
+}
+
+/* Card Styles */
+.memory-card {
+    /* sets the width and height of the cards using the calc() function to subtract margins */
+    width: calc(20% - 15px);
+    height: calc(25% - 10px);
+    margin: 5px;
+    position: relative;
+    /* transform sets intitial scale to 1, transform-style: preserve-3d allows for 3D transformations, transition to animate transform property */
+    transform: scale(1), rotateY(0deg);
+    transform-style: preserve-3d; 
+    transition: transform .5s;
+
+    .front-face,
+    .back-face {
+        /* width & height of img takes up 100% of the memory-card div */
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        position: absolute;
+        border-radius: 8px;
+        background-color: $black-color;
+        backface-visibility: hidden; /* ensures that the back face is not visible when the card is flipped */
+    
+        &.front-face {
+            transform: rotateY(180deg);
+        }
+    }
+
+    /* Click animation */
+    &:active {
+        /* scales down the card slightly */
+        transform: scale(.97);
+        /* creates visual feedback for click action */
+        transition: transform .2s;
+    }
+
+    &.flip.flip-delay {
+        transition-delay: 0.5s;
+    }
+
+    &.flip {
+        /* reveals back-face */
+        transform: rotateY(180deg)
+    }
 }
 
