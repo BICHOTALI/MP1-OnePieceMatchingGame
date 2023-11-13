@@ -1,0 +1,22 @@
+// Partials
+@use 'variables' as var;
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url('https://w0.peakpx.com/wallpaper/121/94/HD-wallpaper-one-piece-one-piece-anime.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
