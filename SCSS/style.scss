@@ -13,16 +13,16 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-image: $logo-img;
+    background-image: var.$logo-img;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 h1 {
-    color: $yellow-color;
+    color: var.$yellow-color;
     margin-top: 10px;
-    text-shadow: 2px 2px $red-color; //possible funtion
+    text-shadow: 2px 2px var.$red-color; //possible funtion
 }
 
 .logo-image {
@@ -56,21 +56,21 @@ h1 {
 
 button{
     font-size: 80%;
-    font-family: $main-font;
-    color: $yellow-color;
-    text-shadow: 3px 3px $red-color; //possible function
-    background-color: $btnOverlay-BLK;
+    font-family: var.$main-font;
+    color: var.$yellow-color;
+    text-shadow: 3px 3px var.$red-color; //possible function
+    background-color: var.$btnOverlay-BLK;
     border-radius: 10px;
     padding: 20px;
 }
 
 @keyframes overlay-grow{
     from{
-        background-color: $btnOverlay-WHT;
+        background-color: var.$btnOverlay-WHT;
         font-size: 0;
     }
     to{
-        background-color: $btnOverlay-BLK;
+        background-color: var.$btnOverlay-BLK;
         font-size: 10em;
     }
 }
@@ -82,8 +82,8 @@ aside {
     margin-top: 40px;
 
     div {
-        color: $black-color;
-        text-shadow: 1px 1px $div-text-shadow; //possible funtion
+        color: var.$black-color;
+        text-shadow: 1px 1px var.$div-text-shadow; //possible funtion
         display: inline-block;
         padding: 10px;
         padding-bottom: 0;
@@ -91,9 +91,9 @@ aside {
 }
 
 #game-status {
-    color: $game-status;
-    background-color: $red-color;
-    text-shadow: 1px 1px $black-color;//possible function
+    color: var.$game-status;
+    background-color: var.$red-color;
+    text-shadow: 1px 1px var.$black-color;//possible function
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -133,7 +133,7 @@ aside {
         padding: 5px;
         position: absolute;
         border-radius: 8px;
-        background-color: $black-color;
+        background-color: var.$black-color;
         backface-visibility: hidden; /* ensures that the back face is not visible when the card is flipped */
     
         &.front-face {
