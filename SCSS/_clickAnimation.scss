@@ -1,0 +1,20 @@
+
+@mixin click {
+    /* Click animation */
+    &:active {
+        /* scales down the card slightly */
+        transform: scale(.97);
+        /* creates visual feedback for click action */
+        transition: transform .2s;
+    }
+
+    &.flip {
+        /* reveals back-face */
+        transform: rotateY(180deg);
+
+        &.flip-delay {
+            transition-delay: 0.5s;
+        }
+    
+    }
+}
