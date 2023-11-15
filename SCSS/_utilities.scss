@@ -1,0 +1,6 @@
+
+
+// text shadow mixin
+@mixin text-shadow($x, $color) {
+    text-shadow: $x $x $color;
+}
