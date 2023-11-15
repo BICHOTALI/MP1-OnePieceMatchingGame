@@ -1,6 +1,7 @@
 // Partials
 @import './variables';
 @import './utilities';
+@import './clickAnimation';
 
 
 * {
@@ -54,6 +55,8 @@
         display: flex;
         animation: overlay-grow 500ms forwards;
     }
+
+    @include overlay-grow;
 }
 
 button{
@@ -64,16 +67,10 @@ button{
     background-color: $btnOverlay-BLK;
     border-radius: 10px;
     padding: 20px;
-}
 
-@keyframes overlay-grow{
-    from{
-        background-color: $btnOverlay-WHT;
-        font-size: 0;
-    }
-    to{
-        background-color: $btnOverlay-BLK;
-        font-size: 10em;
+    &:hover {
+        color: $red-color;
+        @include text-shadow(3px, $yellow-color);
     }
 }
 
@@ -143,21 +140,7 @@ aside {
         }
     }
 
-    /* Click animation */
-    &:active {
-        /* scales down the card slightly */
-        transform: scale(.97);
-        /* creates visual feedback for click action */
-        transition: transform .2s;
-    }
+    @include click; // click animation
 
-    &.flip.flip-delay {
-        transition-delay: 0.5s;
-    }
-
-    &.flip {
-        /* reveals back-face */
-        transform: rotateY(180deg)
-    }
 }
 
