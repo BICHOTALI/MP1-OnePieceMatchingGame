@@ -44,17 +44,6 @@
   display: flex;
   animation: overlay-grow 500ms forwards;
 }
-
-button {
-  font-size: 80%;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  color: #ffd00d;
-  text-shadow: 3px 3px #ad343e;
-  background-color: rgba(0, 0, 0, 0.95);
-  border-radius: 10px;
-  padding: 20px;
-}
-
 @keyframes overlay-grow {
   from {
     background-color: rgba(0, 0, 0, 0);
@@ -65,6 +54,21 @@ button {
     font-size: 10em;
   }
 }
+
+button {
+  font-size: 80%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: #ffd00d;
+  text-shadow: 3px 3px #ad343e;
+  background-color: rgba(0, 0, 0, 0.95);
+  border-radius: 10px;
+  padding: 20px;
+}
+button:hover {
+  color: #ad343e;
+  text-shadow: 3px 3px #ffd00d;
+}
+
 /* Styles for Game Points and Status */
 aside {
   margin-top: 40px;
@@ -131,10 +135,10 @@ aside div {
   /* creates visual feedback for click action */
   transition: transform 0.2s;
 }
-.memory-card.flip.flip-delay {
-  transition-delay: 0.5s;
-}
 .memory-card.flip {
   /* reveals back-face */
   transform: rotateY(180deg);
+}
+.memory-card.flip.flip-delay {
+  transition-delay: 0.5s;
 }/*# sourceMappingURL=style.css.map */
