@@ -3,8 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-body {
+* body {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,18 +15,17 @@ body {
   background-size: cover;
 }
 
-h1 {
-  color: #ffd00d;
-  margin-top: 10px;
-  text-shadow: 2px 2px #ad343e;
-}
-
 .logo-image {
   margin-top: 20px;
   text-align: center;
 }
 .logo-image img {
   width: 350px;
+}
+.logo-image h1 {
+  color: #ffd00d;
+  margin-top: 10px;
+  text-shadow: 2px 2px #ad343e;
 }
 
 /* Styles for Overlay Start Game */
@@ -90,8 +88,8 @@ aside div {
 /* This is the styles for the Game Board and Elements within*/
 /* Game Board */
 .game-board {
-  width: 800px;
-  height: 800px;
+  width: 900px;
+  height: 900px;
   margin: auto;
   margin-top: 20px;
   display: flex;
