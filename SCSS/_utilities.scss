@@ -1,6 +1,22 @@
 
 
-// text shadow mixin
+// Text shadow mixin
 @mixin text-shadow($x, $color) {
     text-shadow: $x $x $color;
 }
+
+
+// Overlay keyframes mixin
+@mixin overlay-grow {
+    @keyframes overlay-grow{
+        from {
+            background-color: $btnOverlay-WHT;
+            font-size: 0;
+        }
+        to {
+            background-color: $btnOverlay-BLK;
+            font-size: 10em;
+        }
+    }
+  }
+ 
