@@ -1,28 +1,24 @@
 // Partials
-@use 'variables' as var;
+@import './variables';
+@import './utilities';
 
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background-image: var.$logo-img;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-h1 {
-    color: var.$yellow-color;
-    margin-top: 10px;
-    text-shadow: 2px 2px var.$red-color; //possible funtion
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-image: $logo-img;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
 
 .logo-image {
@@ -32,6 +28,12 @@ h1 {
     img {
         width: 350px;
     }
+
+    h1 {
+        color: $yellow-color;
+        margin-top: 10px;
+        @include text-shadow(2px, $red-color)
+    }    
 }
 
 
@@ -56,21 +58,21 @@ h1 {
 
 button{
     font-size: 80%;
-    font-family: var.$main-font;
-    color: var.$yellow-color;
-    text-shadow: 3px 3px var.$red-color; //possible function
-    background-color: var.$btnOverlay-BLK;
+    font-family: $main-font;
+    color: $yellow-color;
+    @include text-shadow(3px, $red-color);
+    background-color: $btnOverlay-BLK;
     border-radius: 10px;
     padding: 20px;
 }
 
 @keyframes overlay-grow{
     from{
-        background-color: var.$btnOverlay-WHT;
+        background-color: $btnOverlay-WHT;
         font-size: 0;
     }
     to{
-        background-color: var.$btnOverlay-BLK;
+        background-color: $btnOverlay-BLK;
         font-size: 10em;
     }
 }
@@ -82,8 +84,8 @@ aside {
     margin-top: 40px;
 
     div {
-        color: var.$black-color;
-        text-shadow: 1px 1px var.$div-text-shadow; //possible funtion
+        color: $black-color;
+        @include text-shadow(1px, $div-text-shadow);
         display: inline-block;
         padding: 10px;
         padding-bottom: 0;
@@ -91,9 +93,9 @@ aside {
 }
 
 #game-status {
-    color: var.$game-status;
-    background-color: var.$red-color;
-    text-shadow: 1px 1px var.$black-color;//possible function
+    color: $game-status;
+    background-color: $red-color;
+    @include text-shadow(1px, black);
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -104,8 +106,8 @@ aside {
 
 /* Game Board */
 .game-board {
-    width: 800px;
-    height: 800px;
+    width: $gameboard-W;
+    height: $gameboard-H;
     margin: auto;
     margin-top: 20px;
     display: flex;
@@ -133,7 +135,7 @@ aside {
         padding: 5px;
         position: absolute;
         border-radius: 8px;
-        background-color: var.$black-color;
+        background-color: $black-color;
         backface-visibility: hidden; /* ensures that the back face is not visible when the card is flipped */
     
         &.front-face {
